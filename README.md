@@ -4,6 +4,8 @@
 # DESCRIPTION
     Our group is making a remake of a Snake game using Javascript named "Cobra". We are going to be saving highscores and their id, name, and highscore into a MySql database. We are also going to be using scss for the front end of our application. This also has the capability to act as an arcade showing multiple users higshcores. 
 
+    * WE ARE USING BOOTSTRAP 4.0
+
 # Meeting Times
 Wendnesday: 6pm - 7pm October 7th
 
