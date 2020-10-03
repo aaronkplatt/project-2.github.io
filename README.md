@@ -1,30 +1,34 @@
-## PROJECT #2
-...
+## SNAKE
+
 
 # DESCRIPTION
-...
+
 
 # Meeting Times
 
 
 # ROLES
+SERVER/SITE TEAM
 Matt = 
 Tim =
-Johnny  = 
 Aaron = 
 
+GAME TEAM
+Johnny = 
+Clyde =
+
 # TODO
-    *
-    *
-    *
-    *
+    *   
+    *   
+    *   
+    *   
 
 
 # PROBLEMS
-    *
-    *
-    *
-    *
+    *   
+    *   
+    *   
+    *   
 
 # Github Repository
 https://github.com/aaronkplatt/project-2.github.io
