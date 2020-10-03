@@ -18,9 +18,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-//ROUTES FILE IS GOING HERE ----------------------------------------- IMPORTANT
+var routes = require("./controllers/game-controllers.js");
 //Uncommend line 23 when you get the route
-// app.use(routes);
+app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
