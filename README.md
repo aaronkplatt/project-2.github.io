@@ -1,17 +1,28 @@
 ## PROJECT #2
+...
 
 # DESCRIPTION
 ...
 
 # ROLES
-Front End:
-Back End:
+Matt = 
+Tim =
+Johnny  = 
+Aaron = 
+
+# TODO
+    *
+    *
+    *
+    *
+
+
+# PROBLEMS
+    *
+    *
+    *
+    *
 
 # Github 
 https://github.com/aaronkplatt/project-2.github.io
 
-# To Do
-    * Choose Roles
-    * What is our project about?
-    * 
-    * 
