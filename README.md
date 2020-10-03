@@ -23,6 +23,6 @@ Aaron =
     *
     *
 
-# Github 
+# Github Repository
 https://github.com/aaronkplatt/project-2.github.io
 
