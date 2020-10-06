@@ -1,0 +1,21 @@
+body {
+    background-image: url("../img/bogdan-mb0sco-arcade-animate.gif");
+}
+
+/* NAV BAR */
+.navbar {
+    background-color: #161414;
+}
+.nav-title {
+    color: white;
+}
+
+
+
+
+.main-title {
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
