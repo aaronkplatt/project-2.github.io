@@ -7,7 +7,7 @@ module.exports = function (req, res) {
         }).then(function(dbComment) {
             res.json(dbComment);
         });
-    });
+    }); 
 
     app.post("/api/comments", function (req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
