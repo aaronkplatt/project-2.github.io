@@ -1,21 +1,34 @@
+/* MAIN COMPONENTS */
 body {
     background-image: url("../img/bogdan-mb0sco-arcade-animate.gif");
+}
+.main-card {
+    background-color: black;
 }
 
 /* NAV BAR */
 .navbar {
-    background-color: #161414;
+    background-color: black;
 }
 .nav-title {
     color: white;
 }
 
-
-
-
+/* TITLE PAGE */
 .main-title {
     color: white;
     text-align: center;
     padding-top: 200px;
     padding-bottom: 200px;
+    background-color: black;
+}
+
+/* CARDS */
+.card {
+    background-color: black;
+    opacity: 0.75;
+}
+.card-body {
+    color: white;
+    text-align: center;
 }
