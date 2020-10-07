@@ -29,7 +29,16 @@ body {
     align-content: center;
 }
 
-
+/* GAME PAGE */
+#game-page-background {
+    background-image: url("../img/background-game.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#carousel-inner {
+    height: 100px;
+    width: 200px
+}
 
 /* CARDS */
 .card {
