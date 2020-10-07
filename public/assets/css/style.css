@@ -1,0 +1,51 @@
+/* MAIN COMPONENTS */
+body {
+    background-image: url("../img/bogdan-mb0sco-arcade-animate.gif");
+}
+
+/* NAV BAR */
+.navbar {
+    background-color: black;
+}
+.nav-title {
+    color: white;
+}
+
+/* TITLE PAGE */
+.main-title {
+    color: white;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.main-card {
+    background-color: black;
+    color: white;
+}
+#user-login {
+    text-align: center;
+}
+.user-submit {
+    align-content: center;
+}
+
+/* GAME PAGE */
+#game-page-background {
+    background-image: url("../img/background-game.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#carousel-inner {
+    height: 100px;
+    width: 200px
+}
+
+/* CARDS */
+.card {
+    background-color: black;
+    opacity: 0.75;
+}
+.card-body {
+    color: white;
+    text-align: center;
+}
