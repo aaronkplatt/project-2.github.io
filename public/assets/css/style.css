@@ -35,9 +35,22 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-#carousel-inner {
-    height: 100px;
-    width: 200px
+.game-img{
+    height: 500px;
+    width: 100%;
+    align-items: center;
+    size: cover;
+    margin: auto 0;
+}
+.game-img {
+    align-content: center;
+}
+.game-name-background {
+    background-color: black;
+}
+.click-game {
+    text-align: center;
+    color: white;
 }
 
 /* CARDS */
