@@ -3,24 +3,35 @@
   
 </nav>
 <div class="container">
-  <div class="card">
-    <h1 class="main-title">Login?</h1>
+  <div class="main-card">
+    <h1 class="main-title">WELCOME TO COBRA ARCADE!</h1>
+    <form action="/action_page.php">
+      <div class="form-group" id="user-login">
+        <label for="username">Username</label>
+        <input type="username" class="form-control login-field" placeholder="Enter username" id="username">
+      </div>
+      <hr>
+      <div class="form-group" id="user-login">
+        <label for="pwd">Password</label>
+        <input type="password" class="form-control login-field" placeholder="Enter password" id="pwd">
+      </div>
+      <div class="form-group form-check" id="user-login">
+        <label class="form-check-label">
+        <input class="form-check-input login-field" type="checkbox"> Remember me
+      </label>
+      </div>
+      <div id="user-login">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
   </div>
 
   <hr>
   <div class="card">
     <div class="card-body">
-      <h2>GAME NAME</h2>
-      {{!-- <img src="..." alt="GAME IMG"> --}}
-      <button>PLAY</button>
+      <h2>Description:</h2>
+      <p>Creators: </p>
+      
     </div>
   </div>
-  <hr>
-  <div class="card">
-    <div class="card-body">
-      <h2>GAME NAME</h2>
-      {{!-- <img src="..." alt="GAME IMG"> --}}
-      <button>PLAY</button>
-    </div>
-  </div>
-</div>
+  
