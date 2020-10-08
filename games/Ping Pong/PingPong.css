@@ -1,0 +1,83 @@
+#container 
+{
+    position: absolute;
+    width:90%;
+    height: 90%;
+    min-height: 400px;
+    border: solid;
+}
+#terrain
+{
+    position: absolute;
+    height: 75%;
+    width: 100%;
+    border-bottom:solid;
+    border-width:3px;
+    top: 0px;
+    z-index:1;
+}
+#ball
+{
+    background-color:rgba(20,200,200,0.45);
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    left : 50%;
+    top: 50%;
+}
+#player
+{
+    background-color:black;
+    position:absolute;
+    width:10px;
+    height:50px;
+    left: 5%;
+    top: 45%;
+}
+#wall 
+{
+    position:absolute;
+    height: 100%;
+    width:2px;
+    border: dotted 1px;
+    left:80%;
+    top: 0px;
+    background-color:white;
+}
+#bottom 
+{
+    position:absolute;
+    height: 24%;
+    width:100%;
+    bottom: 0px;
+    background-color:white;
+}
+#setup /*  later ook nog puntenteller*/ 
+{
+    padding:10px;
+    position: absolute;
+    bottom: 10%;
+    right:5%;
+}
+#up /* later ook links rechts om punten te rapen */
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 50px;
+    left:51px;
+    top: 1px;
+}
+#down
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 1px;
+    left:51px;
+}
+input 
+{
+    width:50px;
+}
