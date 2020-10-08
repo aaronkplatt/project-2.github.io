@@ -5,7 +5,7 @@ git <div class="container-fluid" id="game-page-background">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                {{!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>   --}}
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
                 {{!-- flappy bird --}}
@@ -19,12 +19,23 @@ git <div class="container-fluid" id="game-page-background">
                         </div>
                     </div>
                 </div>
-                {{!-- Snake --}}
+                {{!-- Cobra --}}
                 <div class="carousel-item">
-                    <img class="game-img" src="../public/assets/img/snake.png" alt="flappy bird">
+                    <img class="game-img" src="../public/assets/img/snake.png" alt="cobra">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="game-name-background">
-                            <h5>Snake</h5>
+                            <h5>Cobra</h5>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, id quia praesentium iur eee eos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{!-- Ping Pong --}}
+                <div class="carousel-item">
+                    <img class="game-img" src="../public/assets/img/ping-pong.PNG" alt="ping pong">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="game-name-background">
+                            <h5>Ping Pong</h5>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, id quia praesentium iur eee eos.
                             </p>
                         </div>
@@ -40,6 +51,26 @@ git <div class="container-fluid" id="game-page-background">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
+        <hr>
+        <div class="card">
+            <h2 class="main-title">HIGHSCORES</h2>
+        </div>
+        <div class="card">
+            <div class="card-body row">
+                <div class="col-md-4">
+                    <h3>FLAPPY BIRD</h3>
+                    {{!-- HIGHSCORES GO HERE --}}
+                </div>
+                <div class="col-md-4">
+                    <h3>COBRA</h3>
+                    {{!-- HIGHSCORES GO HERE --}}
+                </div>
+                <div class="col-md-4">
+                    <h3>PING PONG</h3>
+                    {{!-- HIGHSCORES GO HERE --}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
