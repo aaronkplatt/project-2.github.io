@@ -22,20 +22,20 @@ $(document).ready(function () {
         };
 
         // Is this the same?
-        // $.ajax("/api/users", {
-        //     type: "POST",
-        //     data: newUser
-        // }).then(function(){
-        //     console.log("Created New User");
-        //     location.reload();
-        // });
+        $.ajax("/api/users", {
+            type: "POST",
+            data: newUser
+        }).then(function(){
+            console.log("Created New User");
+            location.reload();
+        });
 
-        submitUser(newUser);
+        // submitUser(newUser);
     };
 
-    function submitUser(user) {
-        $.post("/api/users", user, function () {
-            window.location.href = "/users";
-        });
-    }
+    // function submitUser(user) {
+    //     $.post("/api/users", user, function () {
+    //         window.location.href = "/users";
+    //     });
+    // }
 });
