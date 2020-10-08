@@ -232,6 +232,8 @@
           screen_menu.style.display = "none";
           screen_setting.style.display = "none";
           screen_gameover.style.display = "block";
+          console.log(score);
+          //ajax score out.
           break;
       }
     }
