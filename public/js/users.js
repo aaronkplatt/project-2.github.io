@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     const userNameInput = $("#username");
-    const userPasswordInput = $("pwd");
+    const userPasswordInput = $("#pwd");
     const submitForm = $("#create-user");
     // userSelect = $("#user-id"); ?
 
@@ -9,6 +9,7 @@ $(document).ready(function () {
 
     function renderFormSubmit(event) {
         event.preventDefault();
+        // event.stopPropagation();
         let userNameData = userNameInput.val().trim();
         let userPasswordData = userPasswordInput.val().trim();
 
@@ -22,10 +23,10 @@ $(document).ready(function () {
         };
 
         // Is this the same?
-        $.ajax("/api/users", {
+        $.ajax("/api/games", {
             type: "POST",
             data: newUser
-        }).then(function(){
+        }).then(function () {
             console.log("Created New User");
             location.reload();
         });
