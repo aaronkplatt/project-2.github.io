@@ -32,7 +32,7 @@ module.exports = function (app) {
                 id: request.params.id
             },
             include: [db.Score]
-        }).then(function(dbUser) {
+        }).then(function (dbUser) {
             response.json(dbUser);
         });
     });
@@ -47,6 +47,8 @@ module.exports = function (app) {
             response.json(dbUser);
         })
     });
+
+
 
     // DELETE route to remove an existing user
     app.delete("/api/users/:users_id", function (request, response) {
