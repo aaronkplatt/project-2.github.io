@@ -55,6 +55,7 @@ cvs.addEventListener("click", function(evt){
             FLAP.play();
             break;
         case state.over:
+
             let rect = cvs.getBoundingClientRect();
             let clickX = evt.clientX - rect.left;
             let clickY = evt.clientY - rect.top;
@@ -169,6 +170,7 @@ const bird = {
                 if(state.current == state.game){
                     state.current = state.over;
                     DIE.play();
+                    console.log("line 173", score.value); //the score
                 }
             }
             
@@ -216,7 +218,6 @@ const gameOver = {
         if(state.current == state.over){
             ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);   
         }
-        console.log(score);
     }
 }
 
@@ -273,11 +274,13 @@ const pipes = {
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
                 state.current = state.over;
                 HIT.play();
+                console.log("line 277", score.value); //the score
             }
             // BOTTOM PIPE
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
                 state.current = state.over;
                 HIT.play();
+                console.log("line 282", score.value); //the score
             }
             
             // MOVE THE PIPES TO THE LEFT
