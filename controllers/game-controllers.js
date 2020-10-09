@@ -1,14 +1,17 @@
-var express = require("express");
+// var express = require("express");
 
-var router = express.Router();
+// var router = express.Router();
 
-router.get("/", function(req, res) {
-      res.render("index");
+// router.get("/", function(req, res) {
+//       res.render("index");
+// });
+
+// router.get("/games", function(req, res) {
+//       res.render("game");
+// });
+
+router.get("/play", function(req, res) {
+      res.render("play");
 });
 
-router.get("/games", function(req, res) {
-      res.render("game");
-});
-
-
-module.exports = router;
+// module.exports = router;

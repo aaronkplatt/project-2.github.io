@@ -11,7 +11,7 @@ body {
     color: white;
 }
 
-/* TITLE PAGE */
+/* INDEX PAGE */
 .main-title {
     color: white;
     text-align: center;
@@ -21,12 +21,23 @@ body {
 .main-card {
     background-color: black;
     color: white;
+    margin-top: 25px;
 }
 #user-login {
     text-align: center;
 }
+.login-field{
+    width: 250px;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+}
 .user-submit {
     align-content: center;
+}
+.submit-btn {
+    margin-bottom: 10px;
 }
 
 /* GAME PAGE */
@@ -52,6 +63,12 @@ body {
     text-align: center;
     color: white;
 }
+.logout-button {
+    float: right;
+}
+
+/* PLAY PAGE */
+
 
 /* CARDS */
 .card {
