@@ -10,5 +10,8 @@
 //       res.render("game");
 // });
 
+router.get("/play", function(req, res) {
+      res.render("play");
+});
 
 // module.exports = router;
