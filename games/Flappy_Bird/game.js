@@ -236,8 +236,9 @@ const pipes = {
         }
       }
     },
-    reset: function()
-    this.position = [];
+    reset: function() {
+      this.position = [];
+    }
   }
   // SCORE
 const score = {
