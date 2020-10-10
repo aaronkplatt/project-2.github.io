@@ -1,8 +1,13 @@
 <div class="container-fluid" id="game-page-background">
     <div class="container">
+        
         <div class="row">
             <div class="col-md-1"></div>
-            <h1 class="click-game col-md-10">WELCOME <span class="current-user">abc</span>CLICK ON A GAME TO PLAY</h1>
+            <h1 class="click-game col-md-10">WELCOME <span class="current-user">abc</span></h1>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <h1 class="click-game col-md-10">CLICK ON A GAME TO PLAY</h1>
             <button class="logout-button">LOGOUT</button>
         </div>
 
@@ -15,38 +20,32 @@
             <div class="carousel-inner">
                 {{!-- flappy bird --}}
                 <div class="carousel-item active">
-                    <a href="/play"><img class="game-img" src="../public/assets/img/flappybird1.png"
+                    <a href="/games/Flappy_Bird"><img class="game-img" src="../public/assets/img/flappybird1.png"
                             alt="flappy bird"></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="game-name-background">
                             <h5>Flappy Bird</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, id quia praesentium iur
-                                eee eos.
-                            </p>
+                            <p>Side-scroller game where the player controls a bird, attempting to fly between columns of green pipes without hitting them.</p>
                         </div>
                     </div>
                 </div>
                 {{!-- Cobra --}}
                 <div class="carousel-item">
-                    <a href="/play"><img class="game-img" src="../public/assets/img/snake.png" alt="cobra"></a>
+                    <a href="/games/snake"><img class="game-img" src="../public/assets/img/snake.png" alt="cobra"></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="game-name-background">
                             <h5>Cobra</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, id quia praesentium iur
-                                eee eos.
-                            </p>
+                            <p>Player maneuvers a line which grows in length, with the line itself being a primary obstacle.</p>
                         </div>
                     </div>
                 </div>
                 {{!-- Ping Pong --}}
                 <div class="carousel-item">
-                    <a href="/play"><img class="game-img" src="../public/assets/img/ping-pong.PNG" alt="ping pong"></a>
+                    <a href="/games/Ping_Pong"><img class="game-img" src="../public/assets/img/ping-pong.PNG" alt="ping pong"></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="game-name-background">
                             <h5>Ping Pong</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, id quia praesentium iur
-                                eee eos.
-                            </p>
+                            <p>Ping Pong is a two-dimensional sports game that simulates table tennis.</p>
                         </div>
                     </div>
                 </div>
