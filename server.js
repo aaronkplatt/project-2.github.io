@@ -12,7 +12,7 @@ var db = require("./models");
 app.use("/public", express.static("public"));
 
 app.use("/games",express.static("games"));
-
+// app.use("/views",express.static("views"));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
