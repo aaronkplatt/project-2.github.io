@@ -1,6 +1,6 @@
 // Dependencies
 var express = require("express");
-
+require("dotenv").config();
 // Set up the Express App
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -31,7 +31,7 @@ require("./routes/html-routes.js")(app);
 // app.use(htmlRoutes);
 
 // Syncing our database and looging message to the user upon success
-db.sequelize.sync().then(function () {
+db.sequelize.sync({force : false}).then(function () {
   app.listen(PORT, function () {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);

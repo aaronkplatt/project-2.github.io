@@ -1,10 +1,10 @@
-{
+module.exports = {
   "development": {
     "username": "root",
     "password": "root",
     "database": "snake_db",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": process.env.DB_PORT || 3306,
     "dialect": "mysql"
   },
   "test": {
