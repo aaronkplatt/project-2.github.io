@@ -1,7 +1,7 @@
 var ballInterval = {};
 //Ball movement functions
 function initMovement() {
-  var speed = 100;
+  var speed = 500;
   var ballHeight = parseInt(window.getComputedStyle(document.getElementById('ball')).getPropertyValue('height'), 10);
   var terrainHeight = parseInt(window.getComputedStyle(document.getElementById('terrain')).getPropertyValue('height'), 10);
   var playerTop = parseInt(window.getComputedStyle(document.getElementById('player')).getPropertyValue('top'), 10);
