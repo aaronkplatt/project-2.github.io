@@ -1,8 +1,12 @@
+// Dependencies
 var express = require("express");
 
+// Set up the Express App
+var app = express();
 var PORT = process.env.PORT || 8080;
 
-var app = express();
+// Reqquiring our models for syncing
+var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use("/public", express.static("public"));
@@ -24,8 +28,10 @@ require("./routes/html-routes.js")(app);
 // app.use(gameControllerRoutes);
 // app.use(htmlRoutes);
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
-  // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+// Syncing our database and looging message to the user upon success
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
 });
