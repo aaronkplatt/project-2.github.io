@@ -1,17 +1,18 @@
 // Dependencies
 var express = require("express");
 require("dotenv").config();
+var path = require('path');
 // Set up the Express App
 var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Reqquiring our models for syncing
 var db = require("./models");
-
 // Serve static content for the app from the "public" directory in the application directory.
 app.use("/public", express.static("public"));
 
 app.use("/games", express.static("games"));
+app.use('/games/snake', express.static("/games/snake/snake.html"));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
