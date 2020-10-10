@@ -14,6 +14,7 @@ $(document).ready(function () {
 });
 
 
+
 // function displayUser(userObj) {
 //     $(".current-user").text(userObj.name);
 // };
