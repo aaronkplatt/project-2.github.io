@@ -30,10 +30,12 @@ module.exports = function(app) {
       name: req.body.userName,
       password: req.body.password
     };
+    // console.log(dbUserData.name);
+    req.session.username = dbUserData.name;
     let userObj = await db.User.create(dbUserData).then(function(dbUserData) {
       // console.log("What .then() of db.User is being passed: \n", dbUserData);
       // res.json(dbUserData); //shows new data in browser
-      res.render("game");
+      res.render("game", { username: req.session.username });
       return dbUserData.dataValues;
     }).catch(function(error) {
       console.log("Inside of catch from userinfo POST: \n", error);
@@ -42,6 +44,7 @@ module.exports = function(app) {
     console.log("This is the User Obj: \n", userObj);
   });
   app.get("/games/snake", function(req, res) {
+    console.log(req.session.username);
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });
   app.get("/games/Flappy_Bird", function(req, res) {
