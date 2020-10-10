@@ -11,6 +11,8 @@ var db = require("./models");
 // Serve static content for the app from the "public" directory in the application directory.
 app.use("/public", express.static("public"));
 
+app.use("/games",express.static("games"));
+
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
