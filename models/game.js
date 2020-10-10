@@ -4,14 +4,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [45]
+                len: [1, 45]
             }
         },
         link: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [45]
+                len: [1, 45]
             }
         }
     });

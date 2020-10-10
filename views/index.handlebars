@@ -1,11 +1,7 @@
 <div class="container">
   <div class="main-card">
     <h1 class="main-title">WELCOME TO COBRA ARCADE!</h1>
-<<<<<<< HEAD
-    <form id="create-user">
-=======
     <form id="create-user" method="POST" action="/games">
->>>>>>> 590b8aecf12e6c0b91106479dbc92674f7e32bfa
       <div class="form-group" id="user-login">
         <label for="userName">Username</label>
         <input name="userName" type="username" class="form-control login-field" placeholder="Enter username" id="username">
@@ -21,7 +17,7 @@
         </label>
       </div>
       <div id="user-login">
-        <input type="submit" class="btn btn-primary" value="Submit" form="create-user">
+        <input id="submit-btn" type="submit" class="btn btn-primary" value="Submit" form="create-user">
       </div>
     </form>
     {{!-- <div id="user-login">
@@ -40,4 +36,3 @@
     </div>
   </div>
 </div>
-

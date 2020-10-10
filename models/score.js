@@ -4,14 +4,14 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [45]
+          len: [1, 45]
         }
       },
       score: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          len: [45]
+          len: [1, 45]
         }
       }
     });
