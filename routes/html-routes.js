@@ -13,6 +13,11 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../views/game.handlebars"));
     });
 
+    // Route for rendering the play page for the client
+    app.get("/play", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/play.handlebars"));
+    });
+
     // Route for getting username to be used in game.handlebars
     app.get("/api/users", function (req, res) {
         console.log("req.parmas: \n", req.params);
