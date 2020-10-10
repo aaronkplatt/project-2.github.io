@@ -1,5 +1,6 @@
 const path = require("path");
 const db = require("../models");
+// const express = require("express");
 module.exports = function(app) {
   // Route for rendering the index page for the client
   app.get("/", function(req, res) {
@@ -10,10 +11,22 @@ module.exports = function(app) {
   app.get("/games", function(req, res) {
     res.sendFile(path.join(__dirname, "../views/game.handlebars"));
   });
-  // Route for rendering the play page for the client
-  app.get("/play", function(req, res) {
-    res.render("play");
+  
+  // Route for rendering the play cobra page for the client
+  app.get("/playCobra", function(req, res) {
+    res.render("playCobra");
   });
+  // Route for rendering the play flappy page for the client
+  app.get("/playFlappyBird", function(req, res) {
+    res.render("playFlappyBird");
+  });
+  // Route for rendering the play ping page for the client
+  app.get("/playPingPong", function(req, res) {
+    res.render("playPingPong");
+  });
+
+
+
   // Route for getting username to be used in game.handlebars
   app.get("/api/users", function(req, res) {
     console.log("req.parmas: \n", req.params);
@@ -45,13 +58,14 @@ module.exports = function(app) {
     });
     console.log("This is the User Obj: \n", userObj);
   });
-  app.get("/play:cobra", function(req, res) {
+  app.get("/cobra", function(req, res) {
+    // app.use("/games/snake", express.static("snake"));
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });
-  app.get("/play:flappy-bird", function(req, res) {
+  app.get("/flappy-bird", function(req, res) {
     res.sendFile(path.join(__dirname, "../games/Flappy_Bird/index.html"));
   });
-  app.get("/play:ping-pong", function(req, res) {
+  app.get("/ping-pong", function(req, res) {
     res.sendFile(path.join(__dirname, "../games/Ping_Pong/index.html"));
   });
 }
