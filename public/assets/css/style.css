@@ -3,6 +3,13 @@ body {
     background-image: url("../img/bogdan-mb0sco-arcade-animate.gif");
 }
 
+iframe {
+    background-color: white;
+    position: relative;
+    height: 650px;
+    width: 100%;
+}
+
 /* NAV BAR */
 .navbar {
     background-color: black;
