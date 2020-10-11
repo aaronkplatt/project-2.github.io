@@ -12,11 +12,8 @@ var db = require("./models");
 app.use("/public", express.static("public"));
 
 app.use("/games", express.static("games"));
-<<<<<<< HEAD
-app.use('/games/snake', express.static("/games/snake/snake.html"));
-=======
 // app.use("/games/snake", express.static("snake"));
->>>>>>> 5df1ab2775839192e011c4ef48d0d227a068b4fb
+
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
