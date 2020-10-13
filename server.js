@@ -14,6 +14,8 @@ app.use("/public", express.static("public"));
 app.use("/games", express.static("games"));
 // app.use("/games/snake", express.static("snake"));
 
+
+
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
