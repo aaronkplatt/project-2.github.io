@@ -46,6 +46,9 @@ iframe {
 .submit-btn {
     margin-bottom: 10px;
 }
+#sign-up-btn {
+    margin-bottom: 10px;
+}
 
 /* GAME PAGE */
 #game-page-background {
