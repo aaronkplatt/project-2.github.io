@@ -27,9 +27,8 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 // var gameControllerRoutes = require("./controllers/game-controllers.js");
 require("./routes/html-routes.js")(app);
-//Uncommend line 23 when you get the route
-// app.use(gameControllerRoutes);
-// app.use(htmlRoutes);
+require("./routes/score-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
 // Syncing our database and looging message to the user upon success
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {

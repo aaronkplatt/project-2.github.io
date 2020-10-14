@@ -13,14 +13,17 @@ module.exports = function(app) {
   });
   // Route for rendering the play cobra page for the client
   app.get("/playCobra", function(req, res) {
+    if (req.session.username === null) res.redirect('/');
     res.render("playCobra");
   });
   // Route for rendering the play flappy page for the client
   app.get("/playFlappyBird", function(req, res) {
+    if (req.session.username === null) res.redirect('/');
     res.render("playFlappyBird");
   });
   // Route for rendering the play ping page for the client
   app.get("/playPingPong", function(req, res) {
+    if (req.session.username === null) res.redirect('/');
     res.render("playPingPong");
   });
   // Route for getting username to be used in game.handlebars
@@ -57,7 +60,7 @@ module.exports = function(app) {
     console.log("This is the User Obj: \n", userObj);
   });
   app.get("/cobra", function(req, res) {
-    console.log(res.session.username);
+    console.log(req.session.username);
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });
   app.get("/flappy-bird", function(req, res) {
