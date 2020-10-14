@@ -11,6 +11,10 @@ module.exports = function(app) {
   app.get("/games", function(req, res) {
     res.render("game");
   });
+  // Route for rendering the signUp page for the client
+  app.get("/signUp", function(req, res) {
+    res.render("signUp");
+  });
   // Route for rendering the play cobra page for the client
   app.get("/playCobra", function(req, res) {
     if (req.session.username === null) res.redirect('/');
