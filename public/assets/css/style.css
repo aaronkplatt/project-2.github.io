@@ -75,7 +75,9 @@ iframe {
 }
 
 /* PLAY PAGE */
-
+.backToGame-button {
+    align-content: center;
+}
 
 /* CARDS */
 .card {
