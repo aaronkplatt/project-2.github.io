@@ -17,17 +17,17 @@ module.exports = function(app) {
   });
   // Route for rendering the play cobra page for the client
   app.get("/playCobra", function(req, res) {
-    if (req.session.username === null) res.redirect('/');
+    if (req.session.username === undefined) res.redirect('/');
     res.render("playCobra");
   });
   // Route for rendering the play flappy page for the client
   app.get("/playFlappyBird", function(req, res) {
-    if (req.session.username === null) res.redirect('/');
+    if (req.session.username === undefined) res.redirect('/');
     res.render("playFlappyBird");
   });
   // Route for rendering the play ping page for the client
   app.get("/playPingPong", function(req, res) {
-    if (req.session.username === null) res.redirect('/');
+    if (req.session.username === undefined) res.redirect('/');
     res.render("playPingPong");
   });
   // Route for getting username to be used in game.handlebars

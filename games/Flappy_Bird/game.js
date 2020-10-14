@@ -57,6 +57,22 @@ cvs.addEventListener("click", function(evt) {
       break;
   }
 });
+//SUBMIT SCORE
+function submitScore(score) {
+  let user_id;
+  $.get("/api/users/sessionID").then(function(result) {
+    user_id = result;
+    let newScore = {
+      game_name: "flappy_bird",
+      sessionScore: score,
+      userId: user_id
+    };
+    $.ajax("/api/submit_score", {
+      type: "POST",
+      data: newScore
+    }).then(function(result) {});
+  });
+};
 // BACKGROUND
 const bg = {
     sX: 0,
@@ -131,7 +147,7 @@ const bird = {
           if (state.current == state.game) {
             state.current = state.over;
             DIE.play();
-            console.log("line 173", score.value); //the score
+            submitScore(score.value);
           }
         }
         // IF THE SPEED IS GREATER THAN THE JUMP MEANS THE BIRD IS FALLING DOWN
@@ -216,13 +232,13 @@ const pipes = {
         if (bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h) {
           state.current = state.over;
           HIT.play();
-          console.log("line 277", score.value); //the score
+          submitScore(score.value);
         }
         // BOTTOM PIPE
         if (bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h) {
           state.current = state.over;
           HIT.play();
-          console.log("line 282", score.value); //the score
+          submitScore(score.value);
         }
         // MOVE THE PIPES TO THE LEFT
         p.x -= this.dx;
