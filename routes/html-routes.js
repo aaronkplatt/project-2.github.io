@@ -1,28 +1,62 @@
 const path = require("path");
 const db = require("../models");
-// const express = require("express");
-module.exports = function(app) {
+module.exports = function(app, express) {
   // Route for rendering the index page for the client
   app.get("/", function(req, res) {
     // res.sendFile(path.join(__dirname, "../views/index.handlebars"));
     res.render("index");
   });
   // Route for rendering the games page for the client
-  app.get("/games", function(req, res) {
-    res.render("game");
+  app.get("/games", async function(req, res) {
+    let flappy_bird_score, snake_score, ping_pong_score;
+    let user_table;
+    await db.User.findAll({}).then(function(dbRaw) {
+      user_table = JSON.parse(JSON.stringify(dbRaw));
+    });
+    await db.Score.findAll({ where: { name: "snake" } }).then(function(dbRaw) {
+      let score_table = JSON.parse(JSON.stringify(dbRaw));
+      score_table.sort((personA, personB) => personA.score < personB.score);
+      snake_score = score_table.slice(0, 5);
+      snake_score = snake_score.map(row => {
+        return { username: user_table[row.UserId].name, score: row.score }; //objects cannot be returned unless using the return keyword in the ()=>{}
+      });
+    });
+    await db.Score.findAll({ where: { name: "flappy_bird" } }).then(function(dbRaw) {
+      let score_table = JSON.parse(JSON.stringify(dbRaw));
+      score_table.sort((personA, personB) => personA.score < personB.score);
+      flappy_bird_score = score_table.slice(0, 5);
+      flappy_bird_score = flappy_bird_score.map(row => {
+        return { username: user_table[row.UserId].name, score: row.score };
+      });
+    });
+    await db.Score.findAll({ where: { name: "ping_pong" } }).then(function(dbRaw) {
+      let score_table = JSON.parse(JSON.stringify(dbRaw));
+      score_table.sort((personA, personB) => personA.score < personB.score);
+      ping_pong_score = score_table.slice(0, 5);
+      ping_pong_score = ping_pong_score.map(row => {
+        return { username: user_table[row.UserId].name, score: row.score };
+      });
+    });
+    let obj = {
+      flappy_bird_score: flappy_bird_score,
+      snake_score: snake_score,
+      ping_pong_score: ping_pong_score
+    };
+    // console.log(obj);
+    res.render("game", obj);
   });
   // Route for rendering the signUp page for the client
   app.get("/signUp", function(req, res) {
     res.render("signUp");
   });
-  // Route for rendering the play cobra page for the client
-  app.get("/playCobra", function(req, res) {
-    if (req.session.username === undefined) res.redirect('/');
-    res.render("playCobra");
+  // Route for rendering the play Snake page for the client
+  app.get("/playSnake", function(req, res) {
+    // if (req.session.username === undefined) res.redirect('/');
+    res.render("playSnake");
   });
   // Route for rendering the play flappy page for the client
   app.get("/playFlappyBird", function(req, res) {
-    if (req.session.username === undefined) res.redirect('/');
+    // if (req.session.username === undefined) res.redirect('/');s
     res.render("playFlappyBird");
   });
   // Route for rendering the play ping page for the client
@@ -63,7 +97,7 @@ module.exports = function(app) {
     });
     console.log("This is the User Obj: \n", userObj);
   });
-  app.get("/cobra", function(req, res) {
+  app.get("/snake", function(req, res) {
     console.log(req.session.username);
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });

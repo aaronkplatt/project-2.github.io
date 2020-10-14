@@ -33,10 +33,10 @@
                 </div>
                 {{!-- Cobra --}}
                 <div class="carousel-item">
-                    <a href="/playCobra" class="cobra-game"><img class="game-img" src="../public/assets/img/snake.png" alt="cobra"></a>
+                    <a href="/playSnake" class="cobra-game"><img class="game-img" src="../public/assets/img/snake.png" alt="cobra"></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="game-name-background">
-                            <h5>Cobra</h5>
+                            <h5>SNAKE</h5>
                             <p>Player maneuvers a line which grows in length, with the line itself being a primary obstacle.</p>
                         </div>
                     </div>
@@ -71,35 +71,29 @@
                 <div class="col-md-4">
                     <h3>FLAPPY BIRD</h3>
                     {{!-- HIGHSCORES GO HERE --}}
-                    <ul class="list-group">
-                        <li class="list-group-item">1. </li>
-                        <li class="list-group-item">2. </li>
-                        <li class="list-group-item">3. </li>
-                        <li class="list-group-item">4. </li>
-                        <li class="list-group-item">5. </li>
-                    </ul>
+                    <ol class="list-group">
+                        {{#each flappy_bird_score}}
+                        <li>{{username}},{{score}}</li>
+                        {{/each}}
+                    </ol>
                 </div>
                 <div class="col-md-4">
-                    <h3>COBRA</h3>
+                    <h3>SNAKE</h3>
                     {{!-- HIGHSCORES GO HERE --}}
-                    <ul class="list-group">
-                        <li class="list-group-item">1. </li>
-                        <li class="list-group-item">2. </li>
-                        <li class="list-group-item">3. </li>
-                        <li class="list-group-item">4. </li>
-                        <li class="list-group-item">5. </li>
-                    </ul>
+                    <ol class="list-group">
+                        {{#each snake_score}}
+                        <li>{{username}},{{score}}</li>
+                        {{/each}}
+                    </ol>
                 </div>
                 <div class="col-md-4">
                     <h3>PING PONG</h3>
                     {{!-- HIGHSCORES GO HERE --}}
-                    <ul class="list-group">
-                        <li class="list-group-item">1. </li>
-                        <li class="list-group-item">2. </li>
-                        <li class="list-group-item">3. </li>
-                        <li class="list-group-item">4. </li>
-                        <li class="list-group-item">5. </li>
-                    </ul>
+                    <ol class="list-group">
+                        {{#each ping_pong_score}}
+                        <li>{{username}},{{score}}</li>
+                        {{/each}}
+                    </ol>
                 </div>
             </div>
         </div>
