@@ -1,6 +1,5 @@
 const path = require("path");
 const db = require("../models");
-
 // const express = require("express");
 module.exports = function(app) {
   // Route for rendering the index page for the client
@@ -12,7 +11,6 @@ module.exports = function(app) {
   app.get("/games", function(req, res) {
     res.sendFile(path.join(__dirname, "../views/game.handlebars"));
   });
-  
   // Route for rendering the play cobra page for the client
   app.get("/playCobra", function(req, res) {
     res.render("playCobra");
@@ -25,9 +23,6 @@ module.exports = function(app) {
   app.get("/playPingPong", function(req, res) {
     res.render("playPingPong");
   });
-
-
-
   // Route for getting username to be used in game.handlebars
   app.get("/api/users", function(req, res) {
     console.log("req.parmas: \n", req.params);
@@ -48,10 +43,12 @@ module.exports = function(app) {
       name: req.body.userName,
       password: req.body.password
     };
+    // console.log(dbUserData.name);
+    req.session.username = dbUserData.name;
     let userObj = await db.User.create(dbUserData).then(function(dbUserData) {
       // console.log("What .then() of db.User is being passed: \n", dbUserData);
       // res.json(dbUserData); //shows new data in browser
-      res.render("game");
+      res.render("game", { username: req.session.username });
       return dbUserData.dataValues;
     }).catch(function(error) {
       console.log("Inside of catch from userinfo POST: \n", error);
@@ -60,7 +57,7 @@ module.exports = function(app) {
     console.log("This is the User Obj: \n", userObj);
   });
   app.get("/cobra", function(req, res) {
-    // app.use("/games/snake", express.static("snake"));
+    console.log(res.session.username);
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });
   app.get("/flappy-bird", function(req, res) {
