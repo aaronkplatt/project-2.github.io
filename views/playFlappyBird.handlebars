@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="main-title">Flappy Bird</h1>
+    <iframe src="../games/Flappy_Bird/index.html" frameborder="0">
+
+    </iframe>
+    <table id="highScores">
+        {{#each scores}}
+        <tr>
+            <td>{{this.user}}</td>
+            <td>{{this.score}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+
+
+
+<script>
+    // if top 10 places in the server chagnes, update the #highscores element.
+</script>

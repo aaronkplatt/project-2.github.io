@@ -62,7 +62,7 @@ h1 {
 
 .score {
   display: inline-block;
-  float: right;
+  /* float: right; */
   font-size: 20px;
   color: #FFFFFF;
   text-align: right;
