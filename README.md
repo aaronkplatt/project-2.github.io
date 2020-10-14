@@ -119,10 +119,10 @@ This application is a work in progress, future updates will include:
 Share with us with any comments or questions to help us grow! 
 ​
 GitHub Contributors: 
-[Clyde Baron Rapinan](https://www.github.com/Rogers-Development-Services), 
-[Aaron Platt](https://www.github.com/Rogers-Development-Services), 
-[Timothy Sanders](https://www.github.com/Rogers-Development-Services), 
-[Johnny L](https://www.github.com/Rogers-Development-Services), and [Matthew Rogers](https://www.github.com/Rogers-Development-Services) 
+[Clyde Baron Rapinan](https://github.com/clydebaron2000), 
+[Aaron Platt](https://github.com/aaronkplatt), 
+[Timothy Sanders](https://github.com/tbsanders5), 
+[Johnny L](https://github.com/johnnylieu), and [Matthew Rogers](https://www.github.com/Rogers-Development-Services) 
 ​
 ## Credits
 ​
