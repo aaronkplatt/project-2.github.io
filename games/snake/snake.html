@@ -133,9 +133,11 @@
       showScreen(0);
       screen_snake.focus();
       snake = [];
+      let x_i = Math.floor((canvas.width / pixel_size) - 1) / 2;
+      let y_i = Math.floor((canvas.height / pixel_size) - 1) / 2;
       for (var i = 4; i >= 0; i--) snake.push({
-        x: i,
-        y: 15
+        x: x_i + i,
+        y: y_i
       });
       snake_next_dir = 1;
       score = 0;
