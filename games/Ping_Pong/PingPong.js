@@ -1,7 +1,7 @@
 var ballInterval = {};
 //Ball movement functions
 function initMovement() {
-  var speed = 500;
+  var speed = 400;
   var ballHeight = parseInt(window.getComputedStyle(document.getElementById('ball')).getPropertyValue('height'), 10);
   var terrainHeight = parseInt(window.getComputedStyle(document.getElementById('terrain')).getPropertyValue('height'), 10);
   var playerTop = parseInt(window.getComputedStyle(document.getElementById('player')).getPropertyValue('top'), 10);
@@ -131,7 +131,7 @@ function print_arrow_key(keyCodeNumber) {
     UP = 38,
     DOWN = 40;
   playerTop = parseInt(window.getComputedStyle(document.getElementById('player')).getPropertyValue('top'), 10);
-  speed2 = 100;
+  speed2 = 500;
   upInterval = {}, downInterval = {};
   playerHeight = parseInt(window.getComputedStyle(document.getElementById('player')).getPropertyValue('height'), 10);
   terrainHeight = parseInt(window.getComputedStyle(document.getElementById('terrain')).getPropertyValue('height'), 10);

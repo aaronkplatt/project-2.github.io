@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
   // Route for rendering the games page for the client
   app.get("/games", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/game.handlebars"));
+    res.render("game");
   });
   // Route for rendering the play cobra page for the client
   app.get("/playCobra", function(req, res) {
