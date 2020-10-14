@@ -15,15 +15,15 @@ module.exports = function(app) {
   //       res.json(dbScore);
   //     });
   //   });
-  app.post("/api/snake", function(req, res) {
-    let score_info = { score: req.body.sessionScore, UserId: req.body.userId };
+  app.post("/api/submit_score", function(req, res) {
+    let score_info = { name: req.body.game_name, score: req.body.sessionScore, UserId: req.body.userId };
     console.log("Score POST request req.body \n", score_info);
-    db.Snake.create(score_info).then(function(res, err) {
+    db.Score.create(score_info).then(function(res, err) {
       if (err) throw err;
       console.log("display score_info: \n", score_info);
     }); ///pass the score to db
   });
-  app.delete("/api/score:scores_id", function(req, res) {
+  app.delete("/api/score/:scores_id", function(req, res) {
     db.Score.destroy({
       where: {
         id: req.params.scores_id

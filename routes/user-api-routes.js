@@ -22,17 +22,18 @@ module.exports = function(app) {
     });
   });
   app.get("/api/users/sessionID", function(request, response) {
-    console.log("/api/users/sessionID called");
+    // console.log("/api/users/sessionID called");
     let id;
     // console.log(`db keys ${Object.keys(db)}`);
     db.User.findAll({}).then(function(dbUser) {
       const table = JSON.parse(JSON.stringify(dbUser));
       const current_username = request.session.username;
+      // console.log(current_username);
       table.forEach(user => {
-        console.log(`compare ${user.name},${current_username}`);
+        // console.log(`compare ${user.name},${current_username}`);
         if (user.name === current_username) id = user.id;
       });
-      console.log(`id: ${id}`);
+      // console.log(`id: ${id}`);
       response.json(id);
     });
   });

@@ -41,6 +41,7 @@ function initMovement() {
       } else {
         if (ballLeft < -4 * ballSize) {
           alert("You have " + loopcounter.toString() + " points");
+          submitScore(loopcounter.toString());
           clearInterval(ballInterval);
           document.getElementById("start").disabled = false;
           document.getElementById("stop").disabled = true;
@@ -61,6 +62,22 @@ function initMovement() {
     }
   }, 10);
 }
+//SubmitScore
+function submitScore(score) {
+  let user_id;
+  $.get("/api/users/sessionID").then(function(result) {
+    user_id = result;
+    let newScore = {
+      game_name: "ping_pong",
+      sessionScore: score,
+      userId: user_id
+    };
+    $.ajax("/api/submit_score", {
+      type: "POST",
+      data: newScore
+    }).then(function(result) {});
+  });
+};
 //Setup functions
 function start() {
   initMovement();

@@ -191,14 +191,15 @@
           //ajax score out.
           function submitScore() {
             let user_id;
-            $.get("api/users/sessionID", {}).then(function(result) {
+            $.get("/api/users/sessionID").then(function(result) {
               console.log(`user_id recieved is ${result},${typeof result}`);
               user_id = result;
               let newSnakeScore = {
+                game_name: "snake",
                 sessionScore: score,
                 userId: user_id
               };
-              $.ajax("/api/snake/", {
+              $.ajax("/api/submit_score", {
                 type: "POST",
                 data: newSnakeScore
               }).then(function(result) {
