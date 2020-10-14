@@ -187,28 +187,28 @@
           screen_menu.style.display = "none";
           screen_setting.style.display = "none";
           screen_gameover.style.display = "block";
-          // console.log("This is the current sessions snake score: \n", score);
-          // //ajax score out.
-          // function submitScore() {
-          //   let user_id;
-          //   $.get("api/users/sessionID", {}).then(function(result) {
-          //     console.log(`user_id recieved is ${result},${typeof result}`);
-          //     user_id = result;
-          //     let newSnakeScore = {
-          //       sessionScore: score,
-          //       userId: user_id
-          //     };
-          //     $.ajax("/api/snake/", {
-          //       type: "POST",
-          //       data: newSnakeScore
-          //     }).then(function(result) {
-          //       console.log("Client side Result: \n", result);
-          //       console.log(`Submited score ${sessionScore},under user ${sessionUsername}!`);
-          //       // res.status(201).send(result);
-          //     });
-          //   });
-          // };
-          // submitScore();
+          console.log("This is the current sessions snake score: \n", score);
+          //ajax score out.
+          function submitScore() {
+            let user_id;
+            $.get("api/users/sessionID", {}).then(function(result) {
+              console.log(`user_id recieved is ${result},${typeof result}`);
+              user_id = result;
+              let newSnakeScore = {
+                sessionScore: score,
+                userId: user_id
+              };
+              $.ajax("/api/snake/", {
+                type: "POST",
+                data: newSnakeScore
+              }).then(function(result) {
+                console.log("Client side Result: \n", result);
+                console.log(`Submited score ${sessionScore},under user ${sessionUsername}!`);
+                // res.status(201).send(result);
+              });
+            });
+          };
+          submitScore();
       }
     }
     window.onload = function() {
