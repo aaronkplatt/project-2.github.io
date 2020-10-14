@@ -5,16 +5,6 @@ module.exports = function(app) {
       res.json(dbScore);
     });
   });
-  //   app.post("/api/scores", function(req, res) {
-  //     let data = {
-  //       username: req.session.username,
-  //     //   game_name: req.body.game_anme,
-  //       score: req.body.score
-  //     };
-  //     db.Snake.create(data).then(function(dbScore) {
-  //       res.json(dbScore);
-  //     });
-  //   });
   app.post("/api/submit_score", function(req, res) {
     let score_info = { name: req.body.game_name, score: req.body.sessionScore, UserId: req.body.userId };
     console.log("Score POST request req.body \n", score_info);

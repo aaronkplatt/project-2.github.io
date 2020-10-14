@@ -1,19 +1,4 @@
-// **************************************************************
-// We want to use this file to:
-// Offer a set of routes for displaying and saving data to the db
-// GET view high scores from db for any assortment of games
-// POST high scores to our website
-// PUT update high scores if the user beats their previous score 
-// DELETE high scores if the user doesn't want to keep it 
-// **************************************************************
-// Dependencies
-// ===============================================================
-// Requirering our models
-// const { json } = require("sequelize/types");
-// const { Json } = require("sequelize/types/lib/utils");
 var db = require("../models");
-// Routes 
-// ===============================================================
 module.exports = function(app) {
   // GET route for getting all users, with highscores for every game they've played
   app.get("/api/users", function(request, response) {
