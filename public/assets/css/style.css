@@ -44,10 +44,12 @@ iframe {
     align-content: center;
 }
 .submit-btn {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 #sign-up-btn {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 /* GAME PAGE */
@@ -79,7 +81,7 @@ iframe {
 
 /* PLAY PAGE */
 .backToGame-button {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* CARDS */
