@@ -15,8 +15,11 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "taoxr1ddmewcsy7p",
+    "password": "k5r3rq00awicwmkt",
+    "database": "qh7ebbik152o26gf",
+    "host": "nnmeqdrilkem9ked.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port": 3306
   }
 }
