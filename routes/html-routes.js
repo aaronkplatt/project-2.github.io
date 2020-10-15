@@ -28,32 +28,38 @@ module.exports = function(app, express) {
       password: req.body.password
     };
     console.log(userSubmission);
+    let errmsg = "";
     //verifying username
-    if (userSubmission.name === undefined || userSubmission.name === null) res.json("uusername is null");
-    else if (userSubmission.name.indexOf(" ") != -1) res.json("Username cannot contain spaces.");
-    else if (userSubmission.name.length > 46) res.json("Username too large. Must be less than 45 characters");
-    else if (userSubmission.name.length < 1) res.json("Username too small. Must be at least 1 character");
-    await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
-      console.log('length', dataRaw.length);
-      if (dataRaw.length >= 1) res.json("Username must be unique");
-    });
+    if (userSubmission.name === undefined || userSubmission.name === null) errmsg += "Username is null. ";
+    else if (userSubmission.name.indexOf(" ") != -1) errmsg += "Username cannot contain spaces. ";
+    else if (userSubmission.name.length > 46) errmsg += "Username too large. Must be less than 45 characters. ";
+    else if (userSubmission.name.length < 1) errmsg += "Username too small. Must be at least 1 character. ";
+    try {
+      await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
+        if (dataRaw.length >= 1) errmsg += "Username must be unique. ";
+      });
+    } catch (err) { throw err };
     //password verification
-    if (userSubmission.password === undefined || userSubmission.password === null) res.json("password field is null");
-    else if (userSubmission.password.indexOf(" ") != -1) res.json("Password cannot contain spaces.");
-    else if (userSubmission.password.length > 46) res.json("Password too large. Must be less than 45 characters");
-    else if (userSubmission.password.length < 1) res.json("Password too small. Must be at least 1 character");
+    if (userSubmission.password === undefined || userSubmission.password === null) errmsg = "Password field is null. ";
+    else if (userSubmission.password.indexOf(" ") != -1) errmsg += "Password cannot contain spaces.";
+    else if (userSubmission.password.length > 46) errmsg += "Password too large. Must be less than 45 characters. ";
+    else if (userSubmission.password.length < 1) errmsg += "Password too small. Must be at least 1 character. ";
     //for testing, uncomment 'success' and comment out the create block
     // undo the above actions when you commit
     //delete these comments when we finalize the code.
-    // res.json("success");
-    db.User.create(userSubmission).then(function(dbUserData) {
-      //set session before redirecting to games!
-      console.log("successfuly created");
-      req.session.username = userSubmission.name;
-      res.redirect("/games");
-    }).catch(function(error) {
-      console.log("Inside of catch from userinfo POST: \n", error);
-    });
+    // return res.json("success");
+    if (errmsg.length > 0) {
+      res.json(errmsg);
+    } else {
+      db.User.create(userSubmission).then(function(dbUserData) {
+        //set session before redirecting to games!
+        console.log("successfuly created");
+        req.session.username = userSubmission.name;
+        res.redirect("/games");
+      }).catch(function(error) {
+        console.log("Inside of catch from userinfo POST: \n", error);
+      });
+    }
   });
   app.post("/verifyUser", function(req, res) { //index calls this on form submission
     let userSubmission = {
