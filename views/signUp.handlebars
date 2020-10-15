@@ -1,11 +1,12 @@
 <div class="container">
-    <div class="main-card">
+  <div class="main-card">
     <h1 class="main-title">WELCOME TO COBRA ARCADE!</h1>
     <h2 class="main-title">SIGN UP BELOW</h2>
-    <form id="create-user" method="POST" action="/createUser">
+    <div id="create-user">
       <div class="form-group" id="user-login">
         <label for="userName">Username</label>
-        <input name="userName" type="username" class="form-control login-field" placeholder="Enter username" id="username">
+        <input name="userName" type="username" class="form-control login-field" placeholder="Enter username"
+          id="username">
       </div>
       <hr>
       <div class="form-group" id="user-login">
@@ -13,11 +14,26 @@
         <input name="password" type="password" class="form-control login-field" placeholder="Enter password" id="pwd">
       </div>
       <div id="user-login">
-        <input type="submit" class="btn btn-primary submit-btn" value="Submit" form="create-user">
+        <button class="btn btn-primary submit-btn">Submit</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <script>
-  
+  $(function () {
+    let submit = $(".submit-btn");
+    submit.click(function (event) {
+      event.preventDefault();
+      const u = $("#username").val();
+      const p = $("#pwd").val();
+      console.log(u, p);
+      $.post("/createUser", { userName: u, password: p }, function (responce) {
+        if (responce.indexOf("/")===-1) {
+          alert(responce);
+        }else{
+          location.replace(responce);
+        }
+      });
+    });
+  })
 </script>
