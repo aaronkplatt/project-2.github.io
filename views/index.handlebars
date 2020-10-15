@@ -17,7 +17,7 @@
         </label>
       </div>
       <div id="user-login">
-        <input type="submit" class="btn btn-primary submit-btn" value="Login" form="create-user">
+        <button class="btn btn-primary submit-btn" >Login</button>
       </div>
     </form>
     <div id="user-login">
@@ -36,3 +36,21 @@
     </div>
   </div>
 </div>
+<script>
+  $(function () {
+    let submit = $(".submit-btn");
+    submit.click(function (event) {
+      event.preventDefault();
+      const u = $("#username").val();
+      const p = $("#pwd").val();
+      console.log(u, p);
+      $.post("/verifyUser", { userName: u, password: p }, function (responce) {
+        if (responce.indexOf("/")===-1) {
+          alert(responce);
+        }else{
+          location.replace(responce);
+        }
+      });
+    });
+  })
+</script>

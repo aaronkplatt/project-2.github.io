@@ -67,21 +67,18 @@ module.exports = function(app, express) {
       password: req.body.password
     };
     //some sort of verification here
-    //db.User.findAll()
     //set session before redirecting to games!
-    db.User.findAll({ where: { userName: userName, password: password } }).then(function(rawValidationData) {
+    db.User.findAll({ where: { name: userSubmission.name, password: userSubmission.password } }).then(function(rawValidationData) {
       console.log("what does validation info look like: \n", rawValidationData);
       if (rawValidationData == 0) {
-        return res.json("This username doesn't exsist!");
+        res.json("Incorrect username or password");
       } else {
         req.session.username = userSubmission.name;
-        res.redirect("/games");
+        res.json("/games");
       }
     }).catch(function(error) {
       console.log("Inside of catch from validation POST: \n", error);
     });
-    req.session.username = userSubmission.name;
-    res.redirect("/games");
   });
   // Route for rendering the games page for the client
   app.get("/games", async function(req, res) {
