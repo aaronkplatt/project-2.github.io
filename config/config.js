@@ -16,6 +16,7 @@ module.exports = {
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
