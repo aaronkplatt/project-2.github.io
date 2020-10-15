@@ -6,18 +6,36 @@ module.exports = function(app) {
       response.json(dbUser);
     });
   });
-  app.get("/api/users/sessionID", async function(req, res) {
-    await db.User.findAll({ where: { name: req.session.username } }).then(function(dbUser) {
-      const row = JSON.parse(JSON.stringify(dbUser));
-      res.json(row.id);
+  app.get("/api/users/sessionID", function(request, response) {
+    // console.log("/api/users/sessionID called");
+    let id;
+    // console.log(`db keys ${Object.keys(db)}`);
+    db.User.findAll({}).then(function(dbUser) {
+      const table = JSON.parse(JSON.stringify(dbUser));
+      const current_username = request.session.username;
+      // console.log(current_username);
+      table.forEach(user => {
+        // console.log(`compare ${user.name},${current_username}`);
+        if (user.name === current_username) id = user.id;
+      });
+      // console.log(`id: ${id}`);
+      response.json(id);
     });
   });
   // GET route for getting all high scores, from every game, associated with a specific user
   app.get("/api/users/:users_id", function(request, response) {
-    db.User.findOne({ where: { id: request.params.id }, include: [db.Score] }).then(function(dbUser) {
+    db.User.findOne({
+      where: {
+        id: request.params.id
+      },
+      include: [db.Score]
+    }).then(function(dbUser) {
       response.json(dbUser);
     });
   });
+  // GET route for getting all comments a user has made for a specific game?
+  // GET route for getting all comments a user has made for all games they've completed?
+  // POST route for adding a new user
   app.post("/api/users", function(request, response) {
     db.User.create(request.body).then(function(dbUser) {
       response.json(dbUser);
