@@ -26,7 +26,7 @@
       event.preventDefault();
       const u = $("#username").val();
       const p = $("#pwd").val();
-      console.log(u, p);
+      {{!-- console.log(u, p); --}}
       $.post("/createUser", { userName: u, password: p }, function (responce) {
         if (responce.indexOf("/")===-1) {
           alert(responce);

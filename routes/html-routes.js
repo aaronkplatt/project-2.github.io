@@ -27,8 +27,8 @@ module.exports = function(app, express) {
       name: req.body.userName,
       password: req.body.password
     };
-    console.log(req.body);
-    console.log(userSubmission);
+    // console.log(req.body);
+    // console.log(userSubmission);
     let errmsg = "";
     //verifying username
     if (userSubmission.name === undefined || userSubmission.name === null) errmsg += "Username is null. ";
@@ -47,13 +47,13 @@ module.exports = function(app, express) {
     await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
       if (dataRaw.length >= 1) errmsg += "Username must be unique. ";
     });
-    console.log(`LENTGH---------------- ${errmsg.length}`)
+    // console.log(`LENTGH---------------- ${errmsg.length}`)
     if (errmsg.length > 0) {
       res.json(errmsg);
     } else {
       db.User.create(userSubmission).then(function(dbUserData) {
         //set session before redirecting to games!
-        console.log("successfuly created");
+        // console.log("successfuly created");
         req.session.username = userSubmission.name;
         res.json("/games");
       }).catch(function(error) {
@@ -66,8 +66,6 @@ module.exports = function(app, express) {
       name: req.body.userName,
       password: req.body.password
     };
-    //some sort of verification here
-    //set session before redirecting to games!
     db.User.findAll({ where: { name: userSubmission.name, password: userSubmission.password } }).then(function(rawValidationData) {
       console.log("what does validation info look like: \n", rawValidationData);
       if (rawValidationData == 0) {
