@@ -12,12 +12,7 @@ module.exports = function(app, express) {
   // Route for getting username to be used in game.handlebars
   app.get("/api/users", function(req, res) {
     console.log("req.parmas: \n", req.params);
-    db.User.findOne({
-      where: {
-        id: req.params.id
-      },
-      // include: [db.Score]
-    }).then(function(dbUser) {
+    db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
       console.log(dbUser);
       res.json(dbUser);
     });
@@ -52,8 +47,6 @@ module.exports = function(app, express) {
       res.json(errmsg);
     } else {
       db.User.create(userSubmission).then(function(dbUserData) {
-        //set session before redirecting to games!
-        // console.log("successfuly created");
         req.session.username = userSubmission.name;
         res.json("/games");
       }).catch(function(error) {
@@ -66,7 +59,12 @@ module.exports = function(app, express) {
       name: req.body.userName,
       password: req.body.password
     };
-    db.User.findAll({ where: { name: userSubmission.name, password: userSubmission.password } }).then(function(rawValidationData) {
+    db.User.findAll({
+      where: {
+        name: userSubmission.name,
+        password: userSubmission.password
+      }
+    }).then(function(rawValidationData) {
       console.log("what does validation info look like: \n", rawValidationData);
       if (rawValidationData == 0) {
         res.json("Incorrect username or password");
@@ -89,28 +87,19 @@ module.exports = function(app, express) {
       user_table = JSON.parse(JSON.stringify(dbRaw));
     });
     await db.Score.findAll({ where: { name: "snake" } }).then(function(dbRaw) {
-      let score_table = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => a.score < b.score);
-      snake_score = score_table.map(row => {
+      snake_score = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => b.score - a.score).map(row => {
         return { username: user_table[row.UserId - 1].name, score: row.score };
       }).slice(0, 5);
     });
     await db.Score.findAll({ where: { name: "flappy_bird" } }).then(function(dbRaw) {
-      let score_table = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => a.score < b.score);
-      flappy_bird_score = score_table.map(row => {
+      flappy_bird_score = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => b.score - a.score).map(row => {
         return { username: user_table[row.UserId - 1].name, score: row.score };
       }).slice(0, 5);
     });
     await db.Score.findAll({ where: { name: "ping_pong" } }).then(function(dbRaw) {
-      let score_table = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => a.score < b.score);
-      ping_pong_score = score_table.map(row => {
+      ping_pong_score = JSON.parse(JSON.stringify(dbRaw)).sort((a, b) => b.score - a.score).map(row => {
         return { username: user_table[row.UserId - 1].name, score: row.score };
       }).slice(0, 5);
-    });
-    console.log("rendering game", {
-      username: req.session.username,
-      flappy_bird_score: flappy_bird_score,
-      snake_score: snake_score,
-      ping_pong_score: ping_pong_score
     });
     res.render("game", {
       username: req.session.username,

@@ -4,7 +4,7 @@
         <h1 class="main-title col-md-10">FLAPPY BIRD</h1>
     </div>
     <div id="user-login">
-       <button onclick="window.location.href='/games';" class="backToGame-button">GO TO GAMES</button>
+        <button onclick="back()" class="backToGame-button">GO TO GAMES</button>
     </div>
     <iframe src="../games/Flappy_Bird/index.html" frameborder="0" style="background:transparent">
     </iframe>
@@ -13,5 +13,8 @@
 
 
 <script>
-    // if top 10 places in the server chagnes, update the #highscores element.
+    function back() {
+        $("iframe")[0].src = "";
+        location.replace('/games');
+    }
 </script>

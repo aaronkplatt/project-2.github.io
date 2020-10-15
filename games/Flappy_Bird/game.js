@@ -59,18 +59,12 @@ cvs.addEventListener("click", function(evt) {
 });
 //SUBMIT SCORE
 function submitScore(score) {
-  let user_id;
-  $.get("/api/users/sessionID").then(function(result) {
-    user_id = result;
-    let newScore = {
+  $.get("/api/users/sessionID").then(function(user_id) {
+    $.post("/api/submit_score", {
       game_name: "flappy_bird",
       sessionScore: score,
       userId: user_id
-    };
-    $.ajax("/api/submit_score", {
-      type: "POST",
-      data: newScore
-    }).then(function(result) {});
+    }, function(resp) {});
   });
 };
 // BACKGROUND

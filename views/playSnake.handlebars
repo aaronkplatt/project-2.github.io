@@ -4,7 +4,7 @@
         <h1 class="click-game col-md-10">SNAKE</h1>
     </div>
     <div id="user-login">
-    <button onclick="window.location.href='/games';" class="backToGame-button">GO TO GAMES</button>
+    <button onclick="back()" class="backToGame-button">GO TO GAMES</button>
     </div>
     {{!-- <h1 class="main-title">COBRA</h1> --}}
     <iframe src="../games/snake/snake.html" frameborder="0">
@@ -14,5 +14,8 @@
 
 
 <script>
-    // if top 10 places in the server chagnes, update the #highscores element.
+    function back() {
+        $("iframe")[0].src = "";
+        location.replace('/games');
+    }
 </script>

@@ -178,23 +178,12 @@
           console.log("This is the current sessions snake score: \n", score);
           //ajax score out.
           function submitScore() {
-            let user_id;
-            $.get("/api/users/sessionID").then(function(result) {
-              console.log(`user_id recieved is ${result},${typeof result}`);
-              user_id = result;
-              let newSnakeScore = {
+            $.get("/api/users/sessionID").then(function(user_id) {
+              $.post("/api/submit_score", {
                 game_name: "snake",
                 sessionScore: score,
                 userId: user_id
-              };
-              $.ajax("/api/submit_score", {
-                type: "POST",
-                data: newSnakeScore
-              }).then(function(result) {
-                console.log("Client side Result: \n", result);
-                console.log(`Submited score ${sessionScore},under user ${sessionUsername}!`);
-                // res.status(201).send(result);
-              });
+              }, function(resp) {});
             });
           };
           submitScore();
