@@ -27,18 +27,14 @@ module.exports = function(app, express) {
       name: req.body.userName,
       password: req.body.password
     };
-    console.log(userSubmission);
+    // console.log(req.body);
+    // console.log(userSubmission);
     let errmsg = "";
     //verifying username
     if (userSubmission.name === undefined || userSubmission.name === null) errmsg += "Username is null. ";
     else if (userSubmission.name.indexOf(" ") != -1) errmsg += "Username cannot contain spaces. ";
     else if (userSubmission.name.length > 46) errmsg += "Username too large. Must be less than 45 characters. ";
     else if (userSubmission.name.length < 1) errmsg += "Username too small. Must be at least 1 character. ";
-    try {
-      await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
-        if (dataRaw.length >= 1) errmsg += "Username must be unique. ";
-      });
-    } catch (err) { throw err };
     //password verification
     if (userSubmission.password === undefined || userSubmission.password === null) errmsg = "Password field is null. ";
     else if (userSubmission.password.indexOf(" ") != -1) errmsg += "Password cannot contain spaces.";
@@ -48,14 +44,18 @@ module.exports = function(app, express) {
     // undo the above actions when you commit
     //delete these comments when we finalize the code.
     // return res.json("success");
+    await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
+      if (dataRaw.length >= 1) errmsg += "Username must be unique. ";
+    });
+    // console.log(`LENTGH---------------- ${errmsg.length}`)
     if (errmsg.length > 0) {
       res.json(errmsg);
     } else {
       db.User.create(userSubmission).then(function(dbUserData) {
         //set session before redirecting to games!
-        console.log("successfuly created");
+        // console.log("successfuly created");
         req.session.username = userSubmission.name;
-        res.redirect("/games");
+        res.json("/games");
       }).catch(function(error) {
         console.log("Inside of catch from userinfo POST: \n", error);
       });
@@ -66,14 +66,21 @@ module.exports = function(app, express) {
       name: req.body.userName,
       password: req.body.password
     };
-    //some sort of verification here
-    //db.User.findAll()
-    //set session before redirecting to games!
-    req.session.username = userSubmission.name;
-    res.redirect("/games");
+    db.User.findAll({ where: { name: userSubmission.name, password: userSubmission.password } }).then(function(rawValidationData) {
+      console.log("what does validation info look like: \n", rawValidationData);
+      if (rawValidationData == 0) {
+        res.json("Incorrect username or password");
+      } else {
+        req.session.username = userSubmission.name;
+        res.json("/games");
+      }
+    }).catch(function(error) {
+      console.log("Inside of catch from validation POST: \n", error);
+    });
   });
   // Route for rendering the games page for the client
   app.get("/games", async function(req, res) {
+    console.log("/games called");
     if (req.session.username === undefined) res.redirect("/");
     //below fetch HIGHSCORES
     let flappy_bird_score, snake_score, ping_pong_score;
@@ -98,6 +105,12 @@ module.exports = function(app, express) {
       ping_pong_score = score_table.map(row => {
         return { username: user_table[row.UserId - 1].name, score: row.score };
       }).slice(0, 5);
+    });
+    console.log("rendering game", {
+      username: req.session.username,
+      flappy_bird_score: flappy_bird_score,
+      snake_score: snake_score,
+      ping_pong_score: ping_pong_score
     });
     res.render("game", {
       username: req.session.username,
