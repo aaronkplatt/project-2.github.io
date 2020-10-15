@@ -35,7 +35,7 @@ module.exports = function(app, express) {
     else if (userSubmission.name.length < 1) res.json("Username too small. Must be at least 1 character");
     await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
       console.log('length', dataRaw.length);
-      if (dataRaw.length >= 1) res.json("u exists in database");
+      if (dataRaw.length >= 1) res.json("Username must be unique");
     });
     //password verification
     if (userSubmission.password === undefined || userSubmission.password === null) res.json("password field is null");
