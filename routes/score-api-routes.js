@@ -6,11 +6,12 @@ module.exports = function(app) {
     });
   });
   app.post("/api/submit_score", function(req, res) {
-    let score_info = { name: req.body.game_name, score: req.body.sessionScore, UserId: req.body.userId };
-    console.log("Score POST request req.body \n", score_info);
-    db.Score.create(score_info).then(function(res, err) {
-      if (err) throw err;
-      console.log("display score_info: \n", score_info);
+    db.Score.create({
+      name: req.body.game_name,
+      score: req.body.sessionScore,
+      UserId: req.body.userId
+    }).then(function(res, err) {
+      if (err) console.log(err);
     }); ///pass the score to db
   });
   app.delete("/api/score/:scores_id", function(req, res) {

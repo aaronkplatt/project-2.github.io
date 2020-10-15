@@ -73,7 +73,7 @@
                     {{!-- HIGHSCORES GO HERE --}}
                     <ol class="list-group">
                         {{#each flappy_bird_score}}
-                        <li>{{username}},{{score}}</li>
+                        <li>{{username}}<span style="float: right;color:rgb(21, 243, 21)">{{score}}</span></li>
                         {{/each}}
                     </ol>
                 </div>
@@ -82,7 +82,7 @@
                     {{!-- HIGHSCORES GO HERE --}}
                     <ol class="list-group">
                         {{#each snake_score}}
-                        <li>{{username}},{{score}}</li>
+                        <li>{{username}}<span style="float: right;color:rgb(21, 243, 21)">{{score}}</span></li>
                         {{/each}}
                     </ol>
                 </div>
@@ -91,7 +91,7 @@
                     {{!-- HIGHSCORES GO HERE --}}
                     <ol class="list-group">
                         {{#each ping_pong_score}}
-                        <li>{{username}},{{score}}</li>
+                        <li>{{username}}<span style="float: right;color:rgb(21, 243, 21)">{{score}}</span></li>
                         {{/each}}
                     </ol>
                 </div>
