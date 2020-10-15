@@ -5,25 +5,9 @@ module.exports = function(app, express) {
   app.get("/", function(req, res) {
     res.render("index");
   });
-  // Route for rendering the games page for the client
   // Route for rendering the signUp page for the client
   app.get("/signUp", function(req, res) {
     res.render("signUp");
-  });
-  // Route for rendering the play Snake page for the client
-  app.get("/playSnake", function(req, res) {
-    // if (req.session.username === undefined) res.redirect('/');
-    res.render("playSnake");
-  });
-  // Route for rendering the play flappy page for the client
-  app.get("/playFlappyBird", function(req, res) {
-    // if (req.session.username === undefined) res.redirect('/');s
-    res.render("playFlappyBird");
-  });
-  // Route for rendering the play ping page for the client
-  app.get("/playPingPong", function(req, res) {
-    if (req.session.username === undefined) res.redirect('/');
-    res.render("playPingPong");
   });
   // Route for getting username to be used in game.handlebars
   app.get("/api/users", function(req, res) {
@@ -38,11 +22,30 @@ module.exports = function(app, express) {
       res.json(dbUser);
     });
   });
-  app.post("/createUser", function(req, res) { //sign up form submission
+  app.post("/createUser", async function(req, res) { //sign up form submission
     let userSubmission = {
       name: req.body.userName,
       password: req.body.password
     };
+    console.log(userSubmission);
+    //verifying username
+    if (userSubmission.name === undefined || userSubmission.name === null) res.json("uusername is null");
+    else if (userSubmission.name.indexOf(" ") != -1) res.json("Username cannot contain spaces.");
+    else if (userSubmission.name.length > 46) res.json("Username too large. Must be less than 45 characters");
+    else if (userSubmission.name.length < 1) res.json("Username too small. Must be at least 1 character");
+    await db.User.findAll({ where: { name: userSubmission.name } }).then(function(dataRaw) {
+      console.log('length', dataRaw.length);
+      if (dataRaw.length >= 1) res.json("u exists in database");
+    });
+    //password verification
+    if (userSubmission.password === undefined || userSubmission.password === null) res.json("password field is null");
+    else if (userSubmission.password.indexOf(" ") != -1) res.json("Password cannot contain spaces.");
+    else if (userSubmission.password.length > 46) res.json("Password too large. Must be less than 45 characters");
+    else if (userSubmission.password.length < 1) res.json("Password too small. Must be at least 1 character");
+    //for testing, uncomment 'success' and comment out the create block
+    // undo the above actions when you commit
+    //delete these comments when we finalize the code.
+    // res.json("success");
     db.User.create(userSubmission).then(function(dbUserData) {
       //set session before redirecting to games!
       console.log("successfuly created");
@@ -63,7 +66,7 @@ module.exports = function(app, express) {
     req.session.username = userSubmission.name;
     res.redirect("/games");
   });
-  // Route for posting new user data to be used in database
+  // Route for rendering the games page for the client
   app.get("/games", async function(req, res) {
     if (req.session.username === undefined) res.redirect("/");
     //below fetch HIGHSCORES
@@ -97,8 +100,23 @@ module.exports = function(app, express) {
       ping_pong_score: ping_pong_score
     });
   });
+  // Route for rendering the play Snake page for the client
+  app.get("/playSnake", function(req, res) {
+    if (req.session.username === undefined) res.redirect('/');
+    res.render("playSnake");
+  });
+  // Route for rendering the play flappy page for the client
+  app.get("/playFlappyBird", function(req, res) {
+    if (req.session.username === undefined) res.redirect('/');
+    res.render("playFlappyBird");
+  });
+  // Route for rendering the play ping page for the client
+  app.get("/playPingPong", function(req, res) {
+    if (req.session.username === undefined) res.redirect('/');
+    res.render("playPingPong");
+  });
+  //actual game URLS
   app.get("/snake", function(req, res) {
-    console.log(req.session.username);
     res.sendFile(path.join(__dirname, "../games/snake/snake.html"));
   });
   app.get("/flappy-bird", function(req, res) {
