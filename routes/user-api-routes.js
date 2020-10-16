@@ -8,7 +8,7 @@ module.exports = function(app) {
   });
   app.get("/api/users/sessionID", function(request, response) {
     db.User.findAll({ where: { name: request.session.username } }).then(function(dbUser) {
-      const row = JSON.parse(JSON.stringify(dbUser));
+      const row = JSON.parse(JSON.stringify(dbUser))[0];
       response.json(row.id);
     });
   });
