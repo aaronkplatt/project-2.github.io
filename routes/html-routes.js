@@ -125,10 +125,10 @@ module.exports = function(app, express) {
             };
             console.log("post-then", renderObj);
             res.render("game", renderObj);
-          })
-        })
-      })
-    })
+          }).catch((err) => { throw err; });
+        }).catch((err) => { throw err; });
+      }).catch((err) => { throw err; });
+    }).catch((err) => { throw err; });
   });
   // Route for rendering the play Snake page for the client
   app.get("/playSnake", function(req, res) {
