@@ -148,12 +148,16 @@
       if (wall == 1) screen_snake.style.borderColor = "#FFFFFF";
     }
 
+    function reduce(i) {
+      return (i - i % pixel_size);
+    }
+
     function showScreen(screen_opt) {
       switch (screen_opt) {
         case 0: //game
           screen_snake.style.display = "block";
-          canvas.width = canvas.offsetWidth - canvas.offsetWidth % pixel_size;
-          canvas.height = (canvas.offsetWidth / 16 * 9 - 32) - (canvas.offsetWidth / 16 * 9 - 32) % pixel_size; //constant
+          canvas.width = reduce(canvas.offsetWidth);
+          canvas.height = reduce(canvas.offsetHeight); //constant
           screen_menu.style.display = "none";
           screen_setting.style.display = "none";
           screen_gameover.style.display = "none";

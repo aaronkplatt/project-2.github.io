@@ -20,8 +20,16 @@
   </header>
   <div id="center">
 
-    <canvas class="wrap" id="snake" width="320" height="320" tabindex="1"></canvas>
+    <canvas class="wrap" id="snake" width="1920" height="1080" tabindex="1"></canvas>
+    <script>
+      window.onresize = c;
 
+      function c() {
+        const width = $("#snake").width;
+        console.log(width);
+        $("#snake").height = width / 1920 * 1080;
+      }
+    </script>
     <!-- Game Over Screen -->
     <div id="gameover">
       <h2>Game Over</h2>
@@ -69,6 +77,7 @@
       var container = document.getElementById("center");
       var body = document.getElementsByTagName("body")[0];
       container.style.height = (body.offsetHeight - 32) + "px";
+
     }
     resize();
     window.onresize = resize;
