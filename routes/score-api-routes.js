@@ -6,6 +6,11 @@ module.exports = function(app) {
     });
   });
   app.post("/api/submit_score", function(req, res) {
+    console.log("submitscore called", {
+      name: req.body.game_name,
+      score: req.body.sessionScore,
+      UserId: req.body.userId
+    });
     db.Score.create({
       name: req.body.game_name,
       score: req.body.sessionScore,
