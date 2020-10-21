@@ -60,6 +60,7 @@ cvs.addEventListener("click", function(evt) {
 //SUBMIT SCORE
 function submitScore(score) {
   $.get("/api/users/sessionID").then(function(user_id) {
+    console.log(`user_id`, user_id);
     $.post("/api/submit_score", {
       game_name: "flappy_bird",
       sessionScore: score,

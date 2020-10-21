@@ -88,7 +88,11 @@ module.exports = function(app, express) {
         ]
       }).then(function(dbRaw) {
         snake_score = JSON.parse(JSON.stringify(dbRaw)).map(row => {
-          return { username: user_table[row.UserId - 1].name, score: row.score };
+          let out;
+          user_table.forEach(user => {
+            if (user.id === row.UserId) out = { username: user.name, score: row.score };
+          });
+          return out;
         }).slice(0, 5);
         console.log("snake");
       }).then(() => { //then flappy
@@ -100,7 +104,11 @@ module.exports = function(app, express) {
           ]
         }).then(function(dbRaw) {
           flappy_bird_score = JSON.parse(JSON.stringify(dbRaw)).map(row => {
-            return { username: user_table[row.UserId - 1].name, score: row.score };
+            let out;
+            user_table.forEach(user => {
+              if (user.id === row.UserId) out = { username: user.name, score: row.score };
+            });
+            return out;
           }).slice(0, 5);
           console.log("flap");
         }).then(() => { //then pong
@@ -112,7 +120,11 @@ module.exports = function(app, express) {
             ]
           }).then(function(dbRaw) {
             ping_pong_score = JSON.parse(JSON.stringify(dbRaw)).map(row => {
-              return { username: user_table[row.UserId - 1].name, score: row.score };
+              let out;
+              user_table.forEach(user => {
+                if (user.id === row.UserId) out = { username: user.name, score: row.score };
+              });
+              return out;
             }).slice(0, 5);
             console.log("pong");
           }).then(() => { //then return
@@ -125,10 +137,10 @@ module.exports = function(app, express) {
             };
             console.log("post-then", renderObj);
             res.render("game", renderObj);
-          }).catch((err) => { throw err; });
-        }).catch((err) => { throw err; });
-      }).catch((err) => { throw err; });
-    }).catch((err) => { throw err; });
+          }).catch((err) => { console.log("ERR", err); });
+        }).catch((err) => { console.log("ERR", err); });
+      }).catch((err) => { console.log("ERR", err); });
+    }).catch((err) => { console.log("ERR", err); });
   });
   // Route for rendering the play Snake page for the client
   app.get("/playSnake", function(req, res) {

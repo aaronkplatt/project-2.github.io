@@ -33,7 +33,7 @@ Here is an example of our app in action:</br>
 ​
 [Cobra-Arcade!](https://youtu.be/a6igGN9kNjk)</br>
 ​
-Access our [deployed application here!](https://glacial-springs-44612.herokuapp.com/)
+Access our [deployed application here!](https://cobra-arcade.herokuapp.com/)
 ​
 ## Installation
 ​

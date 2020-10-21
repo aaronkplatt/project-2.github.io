@@ -15,11 +15,11 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "taoxr1ddmewcsy7p",
-    "password": "k5r3rq00awicwmkt",
-    "database": "qh7ebbik152o26gf",
-    "host": "nnmeqdrilkem9ked.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
-    "port": 3306
+    "username": "b7ea6b021ac4ea",
+    "password": "c77b1e50",
+    "database": "heroku_7b0de79374037da",
+    "host": "us-cdbr-east-02.cleardb.com",
+    "port": 3306,
+    "dialect": "mysql"
   }
 }
